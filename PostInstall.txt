@@ -1,7 +1,6 @@
 
-For more information on lwr-simple, see http://lwr-simple.rubyforge.org
-
-NOTE: Change this information in PostInstall.txt 
-You can also delete it if you don't want it.
+For more information on lwr-simple,
+  see http://lwr-simple.rubyforge.org
+  see http://github.com/yagihiro/lwr-simple/wikis
 
 

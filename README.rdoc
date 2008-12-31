@@ -1,28 +1,32 @@
 = lwr-simple
 
-This library is the powerful web access library like LWP::Simple module.
-All methods are similar interface of LWP::Simple.
+LWR::Simple library is yet another LWP::Simple library for ruby.
 
+== SYNOPSIS:
 
-== DESCRIPTION:
+It is an interface that assumes the scene to which LWR::Simple is taken an active part by the one liner like begin so LWP::Simple, too.
+Its interface really looks like the LWP::Simple.
 
-nodoc...
+  # example. 1
+  $ ruby -rlwr-simple -e 'getprint "http://www.sn.no"'
+
+  # example. 2
+  $ ruby -rlwr-simple -e 'get("http://www.ruby-lang.org/ja/").scan(/<a.*href="(.+?)"/) {|refs| puts(refs[0])}'
+
 
 == FEATURES/PROBLEMS:
 
 nodoc...
 
-== SYNOPSIS:
-
-nodoc...
-
 == REQUIREMENTS:
 
-nothing.
+Self operation capabilities on ruby 1.8.6 or more.
+Probably, it operates on ruby 1.8.3. (relation of dependence on "net/http" library.)
 
 == INSTALL:
 
-nodoc...
+It is not possible to prepare it. It is only git for a while in now.
+Sorry...
 
 == LICENSE:
 
