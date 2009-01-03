@@ -1,11 +1,15 @@
 = lwr-simple
 
-LWR::Simple library is yet another LWP::Simple library for ruby.
+LWR::Simple library is yet another LWP::Simple[http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm] library for ruby.
+
+* rubyforge: http://rubyforge.org/projects/lwr-simple
+* github: http://github.com/yagihiro/lwr-simple/tree/master
+* rdoc: http://lwr-simple.rubyforge.org/rdoc
 
 == SYNOPSIS:
 
-It is an interface that assumes the scene to which LWR::Simple is taken an active part by the one liner like begin so LWP::Simple, too.
-Its interface really looks like the LWP::Simple.
+It is an interface that assumes the scene to which LWR::Simple is taken an active part by the one liner like begin so LWP::Simple[http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm], too.
+Its interface really looks like the LWP::Simple[http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm].
 
   # example. 1
   $ ruby -rlwr-simple -e 'getprint "http://www.sn.no"'
@@ -23,7 +27,7 @@ LWR::Simple library provides 5 methods in toplevel.
 * getstore(url, file)
 * mirror(url, file)
 
-All methods looks like the LWP::Simple library. Please refer to rdoc for details.
+All methods looks like the LWP::Simple[http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm] library. Please refer to rdoc[http://lwr-simple.rubyforge.org/rdoc/] for details.
 
 == REQUIREMENTS:
 
@@ -32,8 +36,9 @@ Probably, it operates on ruby 1.8.3. (relation of dependence on "net/http" libra
 
 == INSTALL:
 
-It is not possible to prepare it. It is only git for a while in now.
-Sorry...
+Install by gem, see
+
+  gem install lwr-simple
 
 Install by git, see
 
@@ -68,4 +73,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 == AUTHOR:
 
 Hiroki Yagita <yagihiro@gmail.com>
-http://d.hatena.ne.jp/clayfish/
+* blog: http://d.hatena.ne.jp/clayfish/
