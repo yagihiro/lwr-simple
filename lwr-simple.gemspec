@@ -5,20 +5,20 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["yagita"]
   s.cert_chain = ["/home/yagita/.gem/gem-public_cert.pem"]
-  s.date = %q{2009-01-01}
-  s.description = %q{nodoc...}
+  s.date = %q{2009-01-03}
+  s.description = %q{It is an interface that assumes the scene to which LWR::Simple is taken an active part by the one liner like begin so LWP::Simple, too. Its interface really looks like the LWP::Simple.}
   s.email = ["yagihiro@gmail.com"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc"]
   s.files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc", "Rakefile", "lib/lwr-simple.rb", "lwr-simple.gemspec", "script/console", "script/destroy", "script/generate", "spec/lwr-simple_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "tasks/rspec.rake"]
   s.has_rdoc = true
-  s.homepage = %q{This library is the powerful web access library like LWP::Simple module.}
+  s.homepage = %q{http://github.com/yagihiro/lwr-simple/tree/master}
   s.post_install_message = %q{PostInstall.txt}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{lwr-simple}
   s.rubygems_version = %q{1.2.0}
   s.signing_key = %q{/home/yagita/.gem/gem-private_key.pem}
-  s.summary = %q{nodoc...}
+  s.summary = %q{LWR::Simple library is yet another LWP::Simple library for ruby.}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION

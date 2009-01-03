@@ -14,9 +14,16 @@ Its interface really looks like the LWP::Simple.
   $ ruby -rlwr-simple -e 'get("http://www.ruby-lang.org/ja/").scan(/<a.*href="(.+?)"/) {|refs| puts(refs[0])}'
 
 
-== FEATURES/PROBLEMS:
+== FEATURES:
 
-nodoc...
+LWR::Simple library provides 5 methods in toplevel.
+* get(url)
+* head(url)
+* getprint(url)
+* getstore(url, file)
+* mirror(url, file)
+
+All methods looks like the LWP::Simple library. Please refer to rdoc for details.
 
 == REQUIREMENTS:
 
@@ -27,6 +34,13 @@ Probably, it operates on ruby 1.8.3. (relation of dependence on "net/http" libra
 
 It is not possible to prepare it. It is only git for a while in now.
 Sorry...
+
+Install by git, see
+
+  git clone git://github.com/yagihiro/lwr-simple.git
+  cd lwr-simple
+  rake gem
+  rake install_gem
 
 == LICENSE:
 
