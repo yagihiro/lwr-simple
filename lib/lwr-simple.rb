@@ -3,21 +3,11 @@
 #
 # LWR::Simple library is yet another LWP::Simple library for ruby.
 #
-# == SYNOPSIS:
-#
-# It is an interface that assumes the scene to which LWR::Simple is taken an active part by the one liner like begin so LWP::Simple, too.
-# Its interface really looks like the LWP::Simple.
-#
-# # example. 1
-# $ ruby -rlwr-simple -e 'getprint "http://www.sn.no"'
-#
-# # example. 2
-# $ ruby -rlwr-simple -e 'get("http://www.ruby-lang.org/ja/").scan(/<a.*href="(.+?)"/) {|refs| puts(refs[0])}'
-#
 # == FEATURES/PROBLEMS:
 #
 # See LWR::Simple module's documents.
 #
+#--
 # == LICENSE:
 #
 # Copyright (c) 2008 Hiroki Yagita
@@ -40,6 +30,7 @@
 # CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
 #
 
 $:.unshift(File.dirname(__FILE__)) unless
@@ -50,7 +41,7 @@ require "uri"
 
 module LWR                      # :nodoc:
 
-  # This module is extend toplevel.
+  # This module extend toplevel.
   # So, in your application, see below example code.
   #
   #   puts get("http://www.google.com/")
@@ -61,14 +52,24 @@ module LWR                      # :nodoc:
 
    module_function
 
-    # Fetch a resource by the given +url+, and return the resource as String.
+    # This method will fetch the document identified by the given +url+ and return it as String.
+    # It returns +nil+ if it fails. The +url+ argument can be either a String's instance.
+    #
+    # +url+:: request target url as String.
+    #
     def get url
       _get(to_uri(url)).body
     rescue
       nil
     end
 
-    # Get document headers - [+content_type+, +document_length+, +modified_time+, +expires+, +server+]
+    # Get document headers.
+    # Returns the following 5 values if successful: [+content_type+, +document_length+, +modified_time+, +expires+, +server+].
+    # All values in return Array are String or nil.
+    # Returns an empty list if this method fails.
+    #
+    # +url+:: request target url as String.
+    #
     def head url
       uri = to_uri url
       req = Net::HTTP::Get.new uri.path
@@ -80,7 +81,13 @@ module LWR                      # :nodoc:
       []
     end
 
-    # Fetch and print a resource by the given +url+.
+    # Get and print a document identified by a +url+.
+    # The document is printed to $stdout as data is received from the network.
+    # If the request fails, then the status code and message are printed on $stderr.
+    # The return value is the HTTP response code as Fixnum.
+    #
+    # +url+:: request target url as String.
+    #
     def getprint url
       uri = to_uri url
       res = _get uri
@@ -97,7 +104,12 @@ module LWR                      # :nodoc:
       code
     end
 
-    # Fetch a resource by the given +url+ and save to +file+.
+    # Gets a document identified by a +url+ and stores it in the +file+.
+    # The return value is the HTTP response code as Fixnum.
+    #
+    # +url+:: request target url as String.
+    # +file+:: store path as String
+    #
     def getstore url, file
       uri = to_uri url
       res = _get uri
@@ -107,7 +119,8 @@ module LWR                      # :nodoc:
       res ? res.code.to_i : 404
     end
 
-    # Mirror a local file and a remote file method.
+    # Get and store a document identified by a +url+, using If-modified-since.
+    # The return value is the HTTP response code as Fixnum.
     #
     # +url+:: request target url as String.
     # +file+:: mirroring file path as String.
@@ -128,22 +141,23 @@ module LWR                      # :nodoc:
       res ? res.code.to_i : 404
     end
 
-    # only internal use.
-    def to_uri url
+    ###
+    ### below methods are only internal use.
+    ###
+
+    def to_uri url              # :nodoc:
       uri = URI.parse url
       uri.path = "/" if uri.path.empty?
       uri
     end
 
-    # only internal use.
-    def _get uri
+    def _get uri                # :nodoc:
       req = Net::HTTP::Get.new uri.path
       res = Net::HTTP.start(uri.host, uri.port) {|http| http.request(req) }
       res
     end
 
-    # only internal use.
-    def _store path, s
+    def _store path, s          # :nodoc:
       File.open(path, "wb") {|f| f.write(s) }
     end
 
